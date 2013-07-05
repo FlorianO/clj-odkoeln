@@ -48,6 +48,9 @@ but maybe one of the convenience functions is enough for you:
 * `(get-event-categories)` - to get all event categories
 * `(get-events-by-categorie id)` - to get all events with a specific categorie
 
+## Continuous Integration
+
+[![Continuous Integration status](https://secure.travis-ci.org/FlorianO/clj-odkoeln.png)](http://travis-ci.org/FlorianO/clj-odkoeln)
 
 ## License
 

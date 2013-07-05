@@ -11,6 +11,15 @@
                :kat :category-id
                :ndays :days}})
 
+(def traffic
+  {:type :http/get
+   :resource "http://www.stadt-koeln.de/externe-dienste/open-data/traffic.php"})
+
+
+(def parking-deck
+  {:type :http/get
+   :resource "http://www.stadt-koeln.de/externe-dienste/open-data/parking.php"})
+
 (defn generate-parameters
   [req-map req-data]
   (let [req default-header]
@@ -21,6 +30,8 @@
   [req-map req-data]
   (case (:type req-map)
     :http/get (client/get (:resource req-map) (generate-parameters req-map req-data))))
+
+;; convenience-fns
 
 (defn get-events []
   (:items (:body (get-data events {}))))
@@ -33,3 +44,9 @@
 
 (defn get-events-by-category [id]
   (:items (:body (get-data events {:category-id id}))))
+
+(defn get-traffic-info []
+  (:body (get-data traffic {})))
+
+(defn get-parking-deck-info []
+  (:features (:body (get-data parking-deck {}))))
